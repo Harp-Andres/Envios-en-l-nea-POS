@@ -29,7 +29,7 @@ static Properties loadProperty = new Properties();
 	static By btingresar = By.id("btnSalir");
 	static By btnIngreso = By.id("btnIngreso");
 
-	
+	//comentario prueba
 	
 	
 	//Constructor de la clase Base
