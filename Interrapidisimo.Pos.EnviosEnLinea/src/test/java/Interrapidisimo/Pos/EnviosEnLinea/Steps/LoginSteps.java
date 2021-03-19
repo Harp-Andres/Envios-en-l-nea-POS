@@ -21,7 +21,7 @@ public class LoginSteps {
 	}
 	
 
-	public static void IngresoModulo() {
+	public static void IngresoModulo() throws IOException, InterruptedException, AWTException {
 		// TODO Auto-generated method stub
 		LoginObjects.IngresoModulo();
 	}
