@@ -16,5 +16,8 @@ Verificar escenarios de prueba.
      And Admitir Envio en Linea en Ruta Feliz
     Then Generar admision y afectacion a caja
     And Ultimo Escenario de validacion OK
+   
+   
+    
 
  

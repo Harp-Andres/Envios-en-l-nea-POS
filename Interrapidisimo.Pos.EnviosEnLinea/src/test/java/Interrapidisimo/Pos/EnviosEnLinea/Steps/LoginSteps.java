@@ -27,13 +27,13 @@ public class LoginSteps {
 	}
 	
 
-	public static void ValidarUsuario() {
+	public static void ValidarUsuario() throws AWTException, IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		LoginObjects.ValidarUsuario();
 	}
 	
 	
-	public static void ValidarEnviosenLinea() {
+	public static void ValidarEnviosenLinea() throws IOException, InterruptedException,  AWTException  {
 		// TODO Auto-generated method stub
 		LoginObjects.ValidarEnviosenLinea();
 	}

@@ -13,8 +13,6 @@ import java.awt.event.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.winium.WiniumDriver;
 
-
-
 import Interrapidisimo.Pos.EnviosEnLinea.Base;
 
 
@@ -37,9 +35,14 @@ static Properties loadProperty = new Properties();
 	static By btnadmisionautomatica = By.id("btnAdmisionAutomatica");
 	static By btnenviosenlinea = By.id("btnEnviosEnLinea");
 	static By pantallaenvios = By.name("ENVIOS EN LINEA");
-	static By datosremitente = By.name("Datos del remitente");
-
-	
+	static By ventanabusqueda = By.name("Datos del remitente");
+	static By ventdatosremitente = By.name("DatosRemitente");
+	//static By texventanaremitente = By.name("ENVÍOS EN LÍNEA");
+	static By iconoventremitente = By.name("imgLogo");
+	static By btnaceptar = By.name("Aceptar");
+	static By vtndetalleenvios = By.className("DetallePreEnvioRemitente");
+	static By Seleccionenvio = By.name("750000005090");
+		
 	
 	//Constructor de la clase Base
 
@@ -133,50 +136,6 @@ static Properties loadProperty = new Properties();
 			
 				
 					
-					if (isDisplayed(datosremitente)) {
-					
-					System.out.println("Encontre Pantalla para buscar cliente Envios En Linea ");
-					Robot robot=new Robot();
-					robot.keyPress(KeyEvent.VK_TAB);
-					robot.keyRelease(KeyEvent.VK_TAB);
-					robot.keyPress(KeyEvent.VK_TAB);
-					robot.keyRelease(KeyEvent.VK_TAB);
-					robot.keyPress(KeyEvent.VK_TAB);
-					robot.keyRelease(KeyEvent.VK_TAB);
-					robot.keyPress(KeyEvent.VK_TAB);
-					robot.keyRelease(KeyEvent.VK_TAB);
-					Thread.sleep(20000);
-	
-					Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-					StringSelection CCcliente = new StringSelection(loadProperty.getProperty("CCcliente"));
-					clipboard.setContents(CCcliente, null);
-					
-					  robot.keyPress(KeyEvent.VK_CONTROL);
-					  robot.keyPress(KeyEvent.VK_V);
-					  robot.keyRelease(KeyEvent.VK_V);
-					  robot.keyRelease(KeyEvent.VK_CONTROL);
-					  Thread.sleep(1000);
-					  
-					  robot.keyPress(KeyEvent.VK_TAB);				 
-					  robot.keyRelease(KeyEvent.VK_TAB);
-					  StringSelection CelularCliente = new StringSelection(loadProperty.getProperty("CelularCliente"));
-					  clipboard.setContents(CelularCliente, null);
-					  robot.keyPress(KeyEvent.VK_CONTROL);
-					  robot.keyPress(KeyEvent.VK_V);
-					  robot.keyRelease(KeyEvent.VK_V);
-					  robot.keyRelease(KeyEvent.VK_CONTROL);
-					  Thread.sleep(1000);
-					  robot.keyPress(KeyEvent.VK_TAB);
-					  robot.keyRelease(KeyEvent.VK_TAB);
-					  robot.keyPress(KeyEvent.VK_ENTER);
-					  robot.keyRelease(KeyEvent.VK_ENTER);
-					  
-
-				
-					}else {
-						System.out.println("NO encontre la primera pantalla de envios en linea");
-						closeDriver();
-						}
 				
 						
 						
@@ -190,18 +149,166 @@ static Properties loadProperty = new Properties();
 		
 	}
 
-	public static void ValidarUsuario()  {
+	public static void ValidarUsuario() throws AWTException, IOException, InterruptedException  {
 		// TODO Auto-generated method stub
+		
+		Robot robot=new Robot();
+
+		if (isDisplayed(ventanabusqueda)) {
+		
+		System.out.println("Encontre Pantalla para buscar cliente con Envios En Linea ");
+		//Robot robot=new Robot();
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		Thread.sleep(20000);
+
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		StringSelection CCcliente = new StringSelection(loadProperty.getProperty("CCcliente"));
+		clipboard.setContents(CCcliente, null);
+		
+		  robot.keyPress(KeyEvent.VK_CONTROL);
+		  robot.keyPress(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_CONTROL);
+		  Thread.sleep(1000);
+		  
+		  robot.keyPress(KeyEvent.VK_TAB);				 
+		  robot.keyRelease(KeyEvent.VK_TAB);
+		  StringSelection CelularCliente = new StringSelection(loadProperty.getProperty("CelularCliente"));
+		  clipboard.setContents(CelularCliente, null);
+		  robot.keyPress(KeyEvent.VK_CONTROL);
+		  robot.keyPress(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_CONTROL);
+		  Thread.sleep(1000);
+		  robot.keyPress(KeyEvent.VK_TAB);
+		  robot.keyRelease(KeyEvent.VK_TAB);
+		  robot.keyPress(KeyEvent.VK_ENTER);
+		  robot.keyRelease(KeyEvent.VK_ENTER);
+		  Thread.sleep(2000);
+		
+
+	
+		}else {
+			System.out.println("NO encontre pantalla para buscar cliente con Envios En Linea");
+			closeDriver();
+			}  
+		
+		
+		//if (isDisplayed(ventdatosremitente) && (isDisplayed(texventanaremitente)) {
+			
+		//if (isDisplayed(iconoventremitente))  {
+			
+			System.out.println("Encontre ventana de datos del remitente");
+			Thread.sleep(4000);
+			  robot.keyPress(KeyEvent.VK_TAB);
+			  robot.keyRelease(KeyEvent.VK_TAB);
+			  robot.keyPress(KeyEvent.VK_TAB);
+			  robot.keyRelease(KeyEvent.VK_TAB);
+			  robot.keyPress(KeyEvent.VK_ENTER);
+			  robot.keyRelease(KeyEvent.VK_ENTER);
+			
+			Thread.sleep(2000);
+			
+			
+			
+	
+			
+		//}else {
+//			System.out.println("NO encontre ventana de datos del remitente");
+//		closeDriver();
+//		}
+			
+			
+		
+		
+		
 		
 	}
 
-	public static void ValidarEnviosenLinea() {
+	public static void ValidarEnviosenLinea() throws IOException, InterruptedException, AWTException {
 		// TODO Auto-generated method stub
+		
+		
+		if(isDisplayed(vtndetalleenvios)) {
+			
+			System.out.println("Encontre ventana de detalle de envios en linea");
+			
+			
+			if(isDisplayed(Seleccionenvio)) {
+				click(Seleccionenvio);
+				click(Seleccionenvio);
+				System.out.println("Se encontro el envio especifico en la grilla");
+				Robot robot=new Robot();
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				
+				
+				
+
+
+			}else {
+				System.out.println("NO Se encontro el envio especifico en la grilla");
+			closeDriver();
+			}
+				
+				
+			
+						
+			
+			
+			
+		}else {
+			System.out.println("NO encontre ventana de detalle de envios en linea");
+		closeDriver();
+		}
+			
+		
 		
 	}
 
+	
+	
+	
+	
 	public static void SeleccionarEnvio() {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 
